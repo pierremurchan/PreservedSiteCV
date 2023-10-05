@@ -5,10 +5,10 @@ Provides optimal stratification for deep learning on datasets with samples from 
 
 ---
 
-## Modifications
+## Forked Modifications
 
 1. Added CLI functionality.
-2. Added script `extract_folds.py` to generate PyTorh PT files from the folds.
+2. Added script `extract_folds.py` to generate PyTorch PT files from the folds.
 
 To run from commmand line with `KIF23.csv`:
 

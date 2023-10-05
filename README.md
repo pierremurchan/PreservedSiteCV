@@ -3,6 +3,38 @@ Provides optimal stratification for deep learning on datasets with samples from 
 <br>
 <img src="https://github.com/fmhoward/PreservedSiteCV/blob/main/PreservedSitesCV.png?raw=true" width="600">
 
+---
+
+## Modifications
+
+1. Added CLI functionality.
+2. Added script `extract_folds.py` to generate PyTorh PT files from the folds.
+
+To run from commmand line with `KIF23.csv`:
+
+```bash
+python preservedsite/crossfolds.py --data-csv KIF23.csv \
+                                    --category KIF23_binary_label \
+                                    --values 0,1,2,3,4 \
+                                    --crossfolds 5 \
+                                    --patient-column PATIENT \
+                                    --target-column CV5 \
+                                    --site-column SITE \
+                                    --randomseed 0 \
+                                    --timelimit 100 \
+                                    --output-csv crossfolds_KIF23.csv \
+
+```
+
+To generate PT files from the folds:
+
+```bash
+python extract_folds.py --input-csv crossfolds_KIF23.csv --cv-col  CV5
+
+```
+
+---
+
 ## Attribution
 If you use this code in your work or find it helpful, please consider citing our paper in <a href='https://www.nature.com/articles/s41467-021-24698-1'>Nature Communications</a>.
 ```

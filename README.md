@@ -7,7 +7,7 @@ Provides optimal stratification for deep learning on datasets with samples from 
 
 ## Forked Modifications
 
-**1.** Added script to bin continuous variables into quantiles to enable stratified site-aware cross-validation of continuous variables.
+**1.** Added script `bin_features.py` to bin continuous variables into quantiles to enable stratified site-aware cross-validation of continuous variables.
 
 To bin continuous variables into quantiles:
 
@@ -18,7 +18,7 @@ python preservedsite/bin_features.py --input-csv TCGA-LUAD_pronostic_DEGs.csv \
                                      --output-dir ./output \
 ```
 
-**2.** Added CLI functionality.
+**2.** Added CLI functionality to `crossfolds.py`.
 
 To run from commmand line with `KIF23.csv`:
 

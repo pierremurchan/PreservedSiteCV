@@ -40,3 +40,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     genrate_pt(args.input_csv, args.cv_col, args.output_path)
+    

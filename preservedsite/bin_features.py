@@ -39,6 +39,7 @@ def main(args):
         gene_df[binary_label_gene_col_name] = pd.qcut(gene_df[gene], q=args.n_bins, labels=False)
         # to do: make SITE column optional
         gene_df['SITE'] = gene_df[args.patient_col].apply(lambda x: x.split('-')[1])
+        gene_df = gene_df.sort_values(by=[args.patient_col])
 
         if not os.path.exists(args.output_dir):
             os.makedirs(args.output_dir)

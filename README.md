@@ -7,8 +7,18 @@ Provides optimal stratification for deep learning on datasets with samples from 
 
 ## Forked Modifications
 
-1. Added CLI functionality.
-2. Added script `extract_folds.py` to generate PyTorch PT files from the folds.
+**1.** Added script to bin continuous variables into quantiles to enable stratified site-aware cross-validation of continuous variables.
+
+To bin continuous variables into quantiles:
+
+```bash
+python preservedsite/bin_features.py --input-csv TCGA-LUAD_pronostic_DEGs.csv \
+                                     --n-bins 5 \
+                                     --patient-col PATIENT \
+                                     --output-dir ./output \
+```
+
+**2.** Added CLI functionality.
 
 To run from commmand line with `KIF23.csv`:
 
@@ -26,10 +36,12 @@ python preservedsite/crossfolds.py --data-csv KIF23.csv \
 
 ```
 
+**3.** Added script `extract_folds.py` to generate PyTorch PT files from the folds.
+
 To generate PT files from the folds:
 
 ```bash
-python extract_folds.py --input-csv crossfolds_KIF23.csv --cv-col  CV5
+python preservedsite/extract_folds.py --input-csv crossfolds_KIF23.csv --cv-col  CV5
 
 ```
 

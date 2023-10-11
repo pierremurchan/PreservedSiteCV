@@ -27,8 +27,9 @@ def generate(data, category, values, n_folds, target_column, patient_column , si
     # if elements of values are not strings, convert them to strings
     if not isinstance(values[0], str):
         values = [str(v) for v in values]
-    # convert category column elements to strings
-    newData[category] = newData[category].astype(str)
+    # convert category column elements to strings if they are float or int
+    if isinstance(newData[category][0], float) or isinstance(newData[category][0], int):
+        newData[category] = newData[category].astype(int).astype(str)
     for v in values:
         listOrder = []
         for s in uniqueSites:

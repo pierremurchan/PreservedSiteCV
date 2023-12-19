@@ -27,9 +27,8 @@ def generate(data, category, values, n_folds, target_column, patient_column , si
     # if elements of values are not strings, convert them to strings
     if not isinstance(values[0], str):
         values = [str(v) for v in values]
-    # convert category column elements to strings if they are float or int
-    if isinstance(newData[category][0], float) or isinstance(newData[category][0], int):
-        newData[category] = newData[category].astype(int).astype(str)
+    # convert category column elements to strings
+    newData[category] = newData[category].astype(str)
     for v in values:
         listOrder = []
         for s in uniqueSites:
@@ -82,5 +81,7 @@ if __name__ == '__main__':
     parser.add_argument('--output-csv', type=str, help='path to output csv', default='crossfolds.csv') 
 
     args = parser.parse_args()
+    data = pd.read_csv(args.data_csv)
+    generate(data, args.category, args.values, args.n_folds, args.target_column, args.patient_column, args.site_column, args.timelimit, args.randomseed, args.output_csv)
 
-    generate(pd.read_csv(args.data_csv), args.category, args.values, args.n_folds, args.target_column, args.patient_column, args.site_column, args.timelimit, args.randomseed, args.output_csv)
+

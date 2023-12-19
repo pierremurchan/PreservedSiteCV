@@ -16,8 +16,11 @@ def genrate_pt(input_csv, cv_col, output_path):
     Output:
         PT file containing a tuple of indices for each fold
     """
-
-    data_df = pd.read_csv(input_csv)
+    try:
+        data_df = pd.read_csv(input_csv)
+    except:
+        print(f'Error: file {input_csv} not found')
+        return
     cv_column = data_df[cv_col]
     n_folds = np.unique(cv_column)
 
@@ -28,8 +31,7 @@ def genrate_pt(input_csv, cv_col, output_path):
     #print(patient_indices_tuple)
     
     torch.save(patient_indices_tuple, os.path.join(output_path, 'folds.pt'))
-
-    # Further operations with patient_indices_tuple if needed
+    print("Saved folds.pt to", output_path)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Extract preserved folds from clinical data')
